@@ -1,0 +1,6 @@
+{
+  "name": "SERVICE PACHA",
+  "description": "Marketplace e-commerce pour l'Afrique avec catalogue de produits en FCFA, promotions, panier et suivi de commandes.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

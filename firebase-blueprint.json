@@ -1,0 +1,100 @@
+{
+  "entities": {
+    "Product": {
+      "title": "Product",
+      "description": "Article de la marketplace SERVICE PACHA géré exclusivement par l'administrateur",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "priceFcfa": { "type": "integer" },
+        "originalPriceFcfa": { "type": "integer" },
+        "categoryId": { "type": "string" },
+        "brand": { "type": "string" },
+        "stockCount": { "type": "integer" },
+        "rating": { "type": "number" },
+        "reviewCount": { "type": "integer" },
+        "isFlashSale": { "type": "boolean" },
+        "isPopular": { "type": "boolean" },
+        "isOfficialStore": { "type": "boolean" }
+      },
+      "required": ["id", "title", "priceFcfa", "categoryId", "stockCount"]
+    },
+    "Category": {
+      "title": "Category",
+      "description": "Catégorie officielle gérée par l'administrateur",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "itemCount": { "type": "integer" }
+      },
+      "required": ["id", "name"]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "Commande client sur SERVICE PACHA",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "orderNumber": { "type": "string" },
+        "userId": { "type": "string" },
+        "status": { "type": "string" },
+        "totalFcfa": { "type": "integer" },
+        "recipientName": { "type": "string" },
+        "phoneNumber": { "type": "string" },
+        "paymentMethodName": { "type": "string" }
+      },
+      "required": ["id", "orderNumber", "userId", "totalFcfa", "status"]
+    },
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "Profil utilisateur avec rôles",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "email": { "type": "string" },
+        "fullName": { "type": "string" },
+        "role": { "type": "string", "enum": ["admin", "client"] }
+      },
+      "required": ["userId", "email", "role"]
+    },
+    "Review": {
+      "title": "Review",
+      "description": "Avis client vérifié sur un produit",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "productId": { "type": "string" },
+        "userId": { "type": "string" },
+        "authorName": { "type": "string" },
+        "rating": { "type": "integer" },
+        "comment": { "type": "string" }
+      },
+      "required": ["id", "productId", "userId", "rating", "comment"]
+    }
+  },
+  "firestore": {
+    "/products/{productId}": {
+      "schema": "#/entities/Product",
+      "description": "Catalogue de produits - lecture publique, écriture réservée à l'administrateur"
+    },
+    "/categories/{categoryId}": {
+      "schema": "#/entities/Category",
+      "description": "Rayons de la marketplace - lecture publique, écriture réservée à l'administrateur"
+    },
+    "/orders/{orderId}": {
+      "schema": "#/entities/Order",
+      "description": "Commandes passées par les clients, modifiables et consultables par l'administrateur et le client propriétaire"
+    },
+    "/users/{userId}": {
+      "schema": "#/entities/UserProfile",
+      "description": "Profils utilisateurs et attribution des rôles"
+    },
+    "/reviews/{reviewId}": {
+      "schema": "#/entities/Review",
+      "description": "Avis clients sur les articles achetés"
+    }
+  }
+}

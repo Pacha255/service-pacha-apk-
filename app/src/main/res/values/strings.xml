@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">SERVICE PACHA</string>
+    <string name="slogan">Votre Marketplace de référence en Afrique</string>
+    <string name="search_placeholder">Rechercher un produit, une marque...</string>
+    <string name="currency">FCFA</string>
+    <string name="nav_home">Accueil</string>
+    <string name="nav_categories">Catégories</string>
+    <string name="nav_cart">Panier</string>
+    <string name="nav_orders">Commandes</string>
+    <string name="nav_profile">Compte</string>
+    <string name="flash_sales">Ventes Flash</string>
+    <string name="popular_products">Produits Populaires</string>
+    <string name="featured_deals">Offres Vedettes</string>
+    <string name="add_to_cart">Ajouter au panier</string>
+    <string name="buy_now">Acheter maintenant</string>
+    <string name="order_placed_success">Commande enregistrée avec succès !</string>
+</resources>
